@@ -12,7 +12,7 @@ class WordEmbeddingDataset(tud.Dataset):
         self.idx_to_word = idx_to_word
         self.word_freqs = torch.Tensor(word_freqs)
         self.word_count = torch.Tensor(word_counts)
-        self.text_encode = [word_to_idx.get(t, vocab_size) for t in text]
+        self.text_encode = [word_to_idx.get(t, vocab_size-1) for t in text]
         self.text_encode = torch.Tensor(self.text_encode).long()
 
 

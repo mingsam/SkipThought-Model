@@ -49,7 +49,7 @@ if ENABLE_GPU:
     model = model.to(device)
 
 optimizer = torch.optim.SGD(model.parameters(), lr=LEARNING_RATE)
-for e in range(NUM_EPOCHS):
+for e in range(0,NUM_EPOCHS):
     for i, (input_labels, pos_labels, neg_labels) in enumerate(dataloader):
 
         # TODO

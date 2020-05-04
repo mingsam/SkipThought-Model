@@ -17,7 +17,7 @@ class EmbeddingModel(nn.Module):
         self.in_embed.weight.data.uniform_(-initrange, initrange)
 
     def forward(self, inout_labels, near_labels, neg_labels):
-        batch_size = inout_labels.size()
+        batch_size = inout_labels.size(0)
 
         input_embedding = self.in_embed(inout_labels)
         near_embedding = self.out_embed(near_labels)

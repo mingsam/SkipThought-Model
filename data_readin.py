@@ -1,4 +1,3 @@
-
 import numpy as np
 from collections import Counter
 
@@ -10,13 +9,13 @@ def word_tokenize(text):
 
 # 数据读取
 def data_readin(path, num_words):
-    with open(path,"r") as fin:
+    with open(path, "r") as fin:
         text = fin.read()
 
     text = [w for w in word_tokenize(text.lower())]
-    vocab = dict(Counter(text).most_common(num_words))
+    vocab = dict(Counter(text).most_common(num_words - 1))
     vocab["<unk>"] = len(text) - np.sum(list(vocab.values()))
     idx_to_word = [word for word in vocab.keys()]
-    word_to_idx = {word:i for word, i in enumerate(idx_to_word)}
+    word_to_idx = {word: i for word, i in enumerate(idx_to_word)}
 
     return text, vocab, idx_to_word, word_to_idx
